@@ -1,0 +1,34 @@
+/*****************************************************************************
+ * base-html
+ * 
+ * @date		$Date$
+ * @revision 	$Rev$
+ * @author		$Author$
+ * @copy		(c) Copyright 2009 Octavodia Ltd. All Rights Reserved.
+ * 
+ *****************************************************************************/
+
+$(document).ready(function() {
+	$('body').addClass('has-js');
+	
+	
+	
+	$('.navigation li').hover(function() {
+		var $this = $(this),
+			list = $this.data('list') || $this.children('ol,ul');
+		
+		list.length
+			&& list.fadeIn()
+			&& $this.data('list',list)
+			&& $this.data('hover',true);
+
+	},function() {
+		var $this = $(this),
+			list = $this.data('list') || $this.children('ol,ul');
+
+		list.length
+			&& setTimeout(function(){ !$this.data('hover')	&& list.fadeOut();},300)
+			&& $this.data('hover',false);
+	});
+	
+});

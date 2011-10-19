@@ -1,0 +1,434 @@
+/*****************************************************************************
+ * base-html
+ * 
+ * @date		$Date$
+ * @revision 	$Rev$
+ * @author		$Author$
+ * @copy		(c) Copyright 2009 Octavodia Ltd. All Rights Reserved.
+ * 
+ *****************************************************************************/
+
+/****************************************************
+** GLOBAL
+** Element Names (h1-h6,p,div,em etc)
+*****************************************************/
+*{margin:0;padding:0;}
+
+body{
+	font:0.9em/1em Helvetica,Verdana,Arial,sans-serif;
+	background-color: #eee;
+}
+
+h1,h2,h3,h4,h5,h6{font-size:1em;}
+
+a:link{}
+
+a:visited{}
+
+a:visited,a:hover{text-decoration:none;}
+
+a img{border:0;}
+
+h1,h2,h3,h4,h5,h6,
+p,ol,ul,dl{margin:0 0 15px 0;}
+
+p,dl {
+	line-height:1.45em;
+}
+
+
+hr{
+	border:0;
+	border-bottom:1px solid #ccc;
+	margin:15px 0;
+	float:none;
+	clear:both;
+}
+
+ol,ul{list-style-position:inside;}
+
+
+/****************************************************
+** Generic Classes
+** Class names
+*****************************************************/
+.small{font-size:0.9em;}
+.smaller{font-size:0.8em;}
+.left{text-align:left;}
+.right{text-align:right;}
+.center{text-align:center;}
+.clear{float:none;clear:both;display:block;}
+span.clear{line-height:0;height:0;font-size:0;}
+
+
+
+
+/****************************************************
+** Content
+** Content-specific (.content ...)
+*****************************************************/
+.content {}
+.content > .inner{}
+
+/* =========== */
+/* = Wrapper = */
+/* =========== */
+.wrapper-inner {
+	padding:15px;
+	background-color: #fff;
+}
+/* ========== */
+/* = Header = */
+/* ========== */
+#header .navigation {}
+#header .navigation-inner {
+	padding:0;
+}
+#header .navigation li {
+	float:left;
+	margin:1px;
+}
+#header .navigation li li{
+	float:none;
+}
+#header .navigation a {
+	display:block;
+	padding:10px 15px;
+}
+.header-inner {
+	z-index:1;
+}
+/* ======== */
+/* = Body = */
+/* ======== */
+
+/* =========== */
+/* = Primary = */
+/* =========== */
+
+/* ============= */
+/* = Secondary = */
+/* ============= */
+#secondary  {
+	font-size:0.85em;
+}
+
+#secondary .navigation li a {
+	text-decoration:underline;
+}
+
+/* ============ */
+/* = Tertiary = */
+/* ============ */
+
+
+/* ========== */
+/* = Footer = */
+/* ========== */
+#footer {
+	color:#999;
+	font-size:0.85em;
+}
+#footer .navigation li {
+	display:inline;
+	margin:0 10px;
+}
+#footer .navigation a {
+	color:#999;
+	text-decoration:underline;
+}
+#credits,
+#credits a {
+	width:52px;
+	height:41px;
+}
+#credits {
+	margin:0;
+	padding:0;
+	line-height:1em;
+}
+#credits a {
+	display:block;
+	text-indent:-9999em;
+	outline:none;
+	background: url('../images/octavodia_logo.png') no-repeat top left;
+	
+}
+/****************************************************
+** Data Types (Generic)
+** .heading, .description, .image ...
+*****************************************************/
+.description,
+.date,
+.meta,
+.copyright {
+	color:#999;
+	font-size:0.9em;
+}
+.description a,
+.date a,
+.meta a {
+	color:#666;
+	text-decoration:underline;
+}
+/****************************************************
+** Sections
+** 
+*****************************************************/
+.section, .inner {
+	position:relative;
+}
+.section > .inner,
+.section > form > .inner{
+	padding:15px;
+}
+
+/* ============== */
+/* = Navigation = */
+/* ============== */
+#header .navigation,
+#footer .navigation {
+	z-index:1;
+	
+	font-family: Verdana;
+}
+
+.navigation,
+.navigation ul,
+.navigation ol {
+	z-index:1;
+	line-height:1em;
+}
+.navigation ul,
+.navigation ol {
+	list-style:none;
+	margin:0;
+}
+
+.navigation li {
+	z-index:1;
+	position:relative;
+}
+.navigation li:hover ul,
+.navigation li:hover ol {
+	display:block;
+}
+.navigation li ul,
+.navigation li ol,
+.has-js .navigation li:hover ul,
+.has-js .navigation li:hover ol {
+	display:none;
+	position:absolute;
+	z-index:1;
+	padding:5px;
+	
+	background-color: red;
+}
+
+.navigation li li {
+	float:none;
+	display:block;
+}
+/* ======== */
+/* = Logo = */
+/* ======== */
+.logo {
+	line-height:0;
+}
+.logo a {
+	text-decoration:none;
+	outline:none;
+}
+.logo a img {
+	border:0;
+}
+.logo a span {
+	position:absolute;
+	top:0;
+	left:0;
+	visibility:hidden;	
+}
+/* ========== */
+/* = Search = */
+/* ========== */
+
+/* ============= */
+/* = Breacrumb = */
+/* ============= */
+
+.breadcrumb {
+	font-size:0.8em;
+}
+.breadcrumb .heading {
+	display:none;
+}
+.breadcrumb,
+.breadcrumb a {
+	color:#999;
+}
+.breadcrumb a {
+	text-decoration:underline;
+}
+.breadcrumb a:hover {
+	text-decoration:none;
+	
+}
+.breadcrumb ol,
+.breadcrumb li {
+	display:inline;
+	margin:0;
+}
+
+.breadcrumb li.last a {
+	color:#666;
+	text-decoration:none;
+}
+
+/* ================= */
+/* = Members/Login = */
+/* ================= */
+
+/* ==================== */
+/* = Index (Articles) = */
+/* ==================== */
+
+/* ======== */
+/* = Text = */
+/* ======== */
+.text {
+	color:#333;
+	line-height:1.4em;
+}
+.text h1,
+.text h2,
+.text h3,
+.text h4,
+.text h5,
+.text h6
+ {
+	font-weight:normal;
+}
+.text h6 {
+	font-size:1.1em;
+}
+
+.text .heading {
+	font-size:1.8em;
+}
+.text .description {
+	font-size:1.45em;
+}
+.text h4 {
+	font-size:1.2em;
+}
+.text h5 {
+	font-size:1.15em;
+}
+.text h6 {
+	font-size:1.1em;
+}
+
+
+/****************************************************
+** IDs
+** 
+*****************************************************/
+
+
+
+/****************************************************
+** Grids
+** 
+*****************************************************/
+.grid-size-0_5{width:5% !important;}
+.grid-size-1{width:10% !important;}
+.grid-size-1_5{width:15% !important;}
+.grid-size-2{width:20% !important;}
+.grid-size-2_5{width:25% !important;}
+.grid-size-3{width:30% !important;}
+.grid-size-3_5{width:35% !important;}
+.grid-size-4{width:40% !important;}
+.grid-size-4_5{width:45% !important;}
+.grid-size-5{width:50% !important;}
+.grid-size-5_5{width:55% !important;}
+.grid-size-6{width:60% !important;}
+.grid-size-6_5{width:65% !important;}
+.grid-size-7{width:70% !important;}
+.grid-size-7_5{width:75% !important;}
+.grid-size-8{width:80% !important;}
+.grid-size-8_5{width:85% !important;}
+.grid-size-9{width:90% !important;}
+.grid-size-9_5{width:95% !important;}
+.grid-size-10{width:100%!important;clear:both;float:none;overflow:hidden;}
+.grid-size-auto{width:auto !important;}
+.grid-left-0_5{margin-left:5% !important;}
+.grid-left-1{margin-left:10% !important;}
+.grid-left-1_5{margin-left:15% !important;}
+.grid-left-2{margin-left:20% !important;}
+.grid-left-2_5{margin-left:25% !important;}
+.grid-left-3{margin-left:30% !important;}
+.grid-left-3_5{margin-left:35% !important;}
+.grid-left-4{margin-left:40% !important;}
+.grid-left-4_5{margin-left:45% !important;}
+.grid-left-5{margin-left:50% !important;}
+.grid-left-5_5{margin-left:55% !important;}
+.grid-left-6{margin-left:60% !important;}
+.grid-left-6_5{margin-left:65% !important;}
+.grid-left-7{margin-left:70% !important;}
+.grid-left-7_5{margin-left:75% !important;}
+.grid-left-8{margin-left:80% !important;}
+.grid-left-8_5{margin-left:85% !important;}
+.grid-left-9{margin-left:90% !important;}
+.grid-left-9_5{margin-left:95% !important;}
+.grid-right-0_5{margin-right:5% !important;}
+.grid-right-1{margin-right:10% !important;}
+.grid-right-1_5{margin-right:15% !important;}
+.grid-right-2{margin-right:20% !important;}
+.grid-right-2_5{margin-right:25% !important;}
+.grid-right-3{margin-right:30% !important;}
+.grid-right-3_5{margin-right:35% !important;}
+.grid-right-4{margin-right:40% !important;}
+.grid-right-4_5{margin-right:45% !important;}
+.grid-right-5{margin-right:50% !important;}
+.grid-right-5_5{margin-right:55% !important;}
+.grid-right-6{margin-right:60% !important;}
+.grid-right-6_5{margin-right:65% !important;}
+.grid-right-7{margin-right:70% !important;}
+.grid-right-7_5{margin-right:75% !important;}
+.grid-right-8{margin-right:80% !important;}
+.grid-right-8_5{margin-right:85% !important;}
+.grid-right-9{margin-right:90% !important;}
+.grid-right-9_5{margin-right:95% !important;}
+.grid{}
+.grid p{}
+.grid-row-inner{}
+.grid-row{line-height:1em;margin:0;padding:0;list-style:none;position:relative;display:block;}
+.grid-row > .item,
+.grid-item{width:auto;float:left;display:block;position:relative;margin:0;padding:0;}
+select.grid-item,
+input.grid-item{position:static;display:inline;float:none;}
+.grid:after,
+.grid-row:after {content:' ';display:block;float:none;line-height:0;height:0;clear:both;}
+
+
+
+/****************************************************
+** Utilities
+** Everything else
+*****************************************************/
+.header .navigation .heading,
+.footer .navigation .heading,
+.search .heading,
+.hide {
+	position:absolute;
+	left:-9999em;
+}
+
+
+.section:after,
+.inner:after,
+.content:after,
+.navigation ol:after,
+.navigation ul:after{
+	content:" ";clear:both;display:block;line-height:0;height:0;
+}

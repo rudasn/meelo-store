@@ -1,0 +1,3 @@
+.section, .inner,.content {
+	height:1%;
+}

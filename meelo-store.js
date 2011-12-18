@@ -1227,7 +1227,7 @@ meelo.Store.item.sort = function(key) {
 	
 	!fn
     	? r.sort(function(a,b) {
-    		return b[key] - a[key];
+    		return b[key] > a[key];
     	})
     	: r.sort(fn);
 	

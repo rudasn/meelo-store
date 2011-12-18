@@ -292,12 +292,12 @@
 <!-- HTML Class  -->
 <script type="text/javascript">
 (function(){var bcn = document.body.parentNode.className;document.body.parentNode.className=bcn.replace(/no\-js/,'has-js');})();
-var console = (function() {
+var console = (function(undefined) {
 	var m = ['log', 'error', 'info', 'warn', 'time','timeEnd', 'dir'];
-	if(typeof window.console === 'undefined') {
-		var c = {};
+	if(typeof window.console === undefined) {
+		var c = {}, f = function() {};
 		for (var i=0; i < m.length; i++) {
-			c[m[i]] = function() {};
+			c[m[i]] = f;
 		};
 		return c;
 	}

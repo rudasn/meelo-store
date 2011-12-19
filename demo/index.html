@@ -1,0 +1,313 @@
+<!doctype html>
+<!--[if lt IE 7 ]><html lang="en"  xmlns:og="http://ogp.me/ns" class="no-js ie6 ie"><![endif]-->
+<!--[if IE 7 ]><html lang="en" xmlns:og="http://ogp.me/ns" class="no-js ie7 ie"><![endif]-->
+<!--[if IE 8 ]><html lang="en" xmlns:og="http://ogp.me/ns" class="no-js ie8 ie"><![endif]-->
+<!--[if IE 9 ]><html lang="en" xmlns:og="http://ogp.me/ns" class="no-js ie9 ie"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" xmlns:og="http://ogp.me/ns" class="no-js"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>meelo-store .:. client-side data manipulation, filtering, &amp; events (javascript)</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<meta name="title" content="meelo-store .:. client-side data manipulation, filtering, &amp; events (javascript)">
+	<meta name="description" content="client-side data manipulation, filtering, &amp; events (javascript)">
+	<meta name="keywords" content="javascript, data">
+    
+	<meta name="author" content="Nicolas Rudas">
+	<meta name="copyright" content="(c) Nicolas Rudas">
+    
+    <!-- open graph protocol (FB)  -->
+	<meta property="og:title" content="meelo-store .:. client-side data manipulation, filtering, &amp; events (javascript)" >
+	<meta property="og:type" content="website" >
+	<meta property="og:url" content="http://rudasn.github.com/meelo-store/" >
+	<!-- <meta property="og:image" content="" >  -->
+	<meta property="og:site_name" content="meelo-store" >
+    
+    <!-- url of current page  -->
+    <link rel="canonical" href="http://rudasn.github.com/meelo-store/">  
+    
+	<link rel="stylesheet" href="static/styles/base.css" media="all" >
+</head>
+<body>
+
+
+<!-- wrapper  -->
+<div id="wrapper" class="container">
+    <div id="wrapper-inner" class="inner">
+    <!-- wrapper content  -->
+        
+        <!-- body  -->
+        <div id="body" class="container">
+            <div id="body-inner" class="inner">
+            <!-- body content  -->
+                
+                <!-- primary  -->
+                <div id="primary" class="container">
+                    <div id="primary-inner" class="inner">
+                    <!-- primary content  -->
+                        
+                        <!-- home  -->
+                        <section id="home" class="home text">
+                            <div id="home-inner" class="inner">
+                            <!-- home content  -->
+                                <h2>meelo-store is a javascript library
+                                    that makes it easy to work with client-side data.
+                                    </h2>
+                                <h3><a href="https://github.com/rudasn/meelo-store/">Code on GitHub</a></h3>
+                                <p>It borrows concepts and syntax from jQuery and Django.</p>
+                                
+                                <hr>
+                                <p>A new store was created using the data you see on your right.
+                                    You can also open your browser's console to see the results.</p>
+                                <p>
+                                    <code class="exec">var Customers = meelo.Store(data);</code>
+                                </p>
+                                <p>
+                                    <code><span class="cmd">Customers.length()</span> </code>
+                                </p>
+                                <hr>
+                                <p>To find customers whose name is <em>Nicolas</em></p>
+                                <p>
+                                    <code class="exec">var nicolas = Customers.filter({
+                                        'name': 'Nicolas'
+                                    });</code>
+                                </p>
+                                <p>
+                                    <code><span class="cmd">nicolas.length()</span></code>
+                                </p>
+                                <hr>
+                                <p>To get the 23rd customer in the dataset.
+                                    This returns a Store object not the actual "customer".</p>
+                                <p>
+                                    <code class="exec">var twentythird = Customers.eq(23);</code>
+                                </p>
+                                
+                                <p>
+                                    <code><span class="cmd">twentythird.name</span> </code>
+                                </p>
+                                <hr>                                
+                                <p>To get the actual object at a given position.</p>
+                                <p>
+                                    <code class="exec">var twentythird = Customers.get(23);</code>
+                                </p>
+                                
+                                <p>
+                                    <code><span class="cmd">twentythird.name</span> </code>
+                                </p>
+                                <hr>                                
+                                <p>To get customers whose age is greater than 27. (You can also use gte, lt, and lte)</p>
+                                <p>
+                                    <code class="exec">var older_than_27 = Customers.filter({
+                                        'age__gt': 27
+                                     });</code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">older_than_27.length()</span> </code>
+                                </p>
+                                <p>Get the first ten and show me their names</p>
+                                <p>
+                                    <code><span class="cmd">older_than_27.slice(0,10).print('name').join(', ')</span> </code>
+                                </p>
+                                <hr>                                
+                                <p>To get customers whose age is between 24 and 29 (inclusive)</p>
+                                <p>
+                                    <code class="exec">var age_range = Customers.filter({
+                                        'age__range': [ 24, 29 ]
+                                    })</code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">age_range.length()</span> </code>
+                                </p>
+                                <hr>                                
+                                <p>To get customers whose age is greater than or equal to 24
+                                    <strong>OR</strong> lower than or equal to 29</p>
+                                <p>
+                                    <code class="exec">var gte24_or_lte29 = Customers.filter({
+                                        'age__gte': 24
+                                    },{
+                                        'age__lte': 29
+                                    }
+                                    )</code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">gte24_or_lte29.length()</span> </code>
+                                </p>
+                                <hr>
+                                <p>Get customers whose age is greater than or equal to <em>24</em> <strong>AND</strong> whose name starts with <em>O</em></p>
+                                <p>
+                                    <code class="exec">var gte24_and_nameo = Customers.filter({
+                                        'age__gte': 24
+                                        , 'name': /^o/i
+                                    })</code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">gte24_and_nameo.length()</span> </code>
+                                </p>
+                                <hr>        
+                                <p>To get customers who have <em>dog</em> as a favourite animal
+                                </p>
+                                <p>
+                                    <code class="exec">var like_dogs = Customers.filter({
+                                        'favourite_animals': 'dog'
+                                    })</code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">like_dogs.length()</span> </code>
+                                </p>
+                                <hr>        
+                                <p>To get customers who have <em>dog</em> <strong>AND</strong>
+                                     <em>cat</em> as a favourite animal
+                                </p>
+                                <p>
+                                    <code class="exec">var like_dogs_cats = Customers.filter({
+                                        'favourite_animals': 'dog'
+                                    }).filter({
+                                        'favourite_animals': 'cat'
+                                    })</code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">like_dogs_cats.length()</span> </code>
+                                </p>
+                                <hr>        
+                                <p>To get customers who have <em>dog</em> <strong>OR</strong>
+                                     <em>cat</em> as a favourite animal
+                                </p>
+                                <p>
+                                    <code class="exec">var like_dogs_or_cats = Customers.filter({
+                                        'favourite_animals': 'dog'
+                                      },{ 'favourite_animals': 'cat'
+                                    })</code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">like_dogs_or_cats.length()</span> </code>
+                                </p>
+                                <hr>        
+                                <p>To add new customers</p>
+                                <p>
+                                    <code class="exec">Customers.push([{
+                                        'name': 'John'
+                                        , 'surname': 'Bonham'
+                                        , 'sex': 'male'
+                                        , 'email': 'john@bonham.com'
+                                        , 'url': 'http://www.bonham.com'
+                                    }])
+                                    </code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">Customers.length()</span> </code>
+                                </p>
+                                <hr>        
+                                <p>To change/update customer data</p>
+                                <p>
+                                    <code class="exec">var update_customers = Customers.filter({
+                                        'sex': 'other'
+                                    }).update({
+                                        'sex': '-'
+                                        , 'lucky_numbers': function(existing_value){
+                                            return [123456789].concat(existing_value);
+                                        }
+                                    })
+                                    </code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">update_customers.length()</span> </code>
+                                </p>
+                                <p>
+                                    <code class="exec">update_customers = Customers.filter({
+                                        'lucky_numbers': 123456789
+                                        , 'sex': '-'
+                                    })
+                                    </code>
+                                </p>            
+                                <p>
+                                    <code><span class="cmd">update_customers.length()</span> </code>
+                                </p>
+                                <hr>        
+                                <p>To loop through the customer data</p>
+                                <p>
+                                    <code class="exec">Customers.slice(0, 10).each(function(item, index){
+                                        console.log(index+': '+item.name);
+                                    })
+                                    </code>
+                                </p>            
+                            </div> <!-- /home-inner  -->
+                        </section> <!-- /home  -->
+                        
+                       
+                        
+                    </div> <!-- /primary-inner  -->
+                </div> <!-- /primary  -->
+                
+                <hr class="hidden">
+                
+                <!-- secondary  -->
+                <aside id="secondary" class="container">
+                    <div id="secondary-inner" class="inner">
+                    <!-- secondary content  -->
+                      
+                      <!-- data  -->
+                      <section id="data" class="data">
+                        <div id="data-inner" class="inner">
+                        <!-- data content  -->
+                            <h2>Data</h2>
+                            <p>Consider a people data set. Each person has
+                                <code>name</code>
+                                , <code>surname</code>
+                                , <code>email</code>
+                                , <code>sex</code>
+                                , <code>url</code>
+                                , <code>pets</code>
+                                , and <code>lucky_numbers</code>.                        
+                                </p>
+                            <textarea id="datastr"></textarea>
+                        </div> <!-- /data-inner  -->
+                      </section> <!-- /data  -->
+                      
+                    
+                    </div> <!-- /secondary-inner  -->
+                </aside> <!-- /secondary  -->
+                                
+            </div> <!-- /body-inner  -->
+        </div> <!-- /body  -->
+                
+        <hr class="hidden">
+        
+        <!-- footer-global  -->
+        <footer id="footer-global" class="container">
+            <div id="footer-global-inner" class="inner">
+            <!-- footer-global content  -->
+                
+                
+                <div id="copyright">Copyright &copy; Nicolas Rudas</div>
+                
+            </div> <!-- /footer-global-inner  -->
+        </footer> <!-- /footer-global  -->        
+        
+    </div> <!-- /wrapper-inner  -->
+</div> <!-- /wrapper  -->
+
+
+<!-- HTML Class  -->
+<script type="text/javascript">
+(function(){var bcn = document.body.parentNode.className;document.body.parentNode.className=bcn.replace(/no\-js/,'has-js');})();
+var console = (function(undefined) {
+	var m = ['log', 'error', 'info', 'warn', 'time','timeEnd', 'dir'];
+	if(typeof window.console === undefined) {
+		var c = {}, f = function() {};
+		for (var i=0; i < m.length; i++) {
+			c[m[i]] = f;
+		};
+		return c;
+	}
+	return window.console;
+})();
+</script>
+<script src="static/scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="store.js" type="text/javascript" charset="utf-8"></script>
+<script src="data.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/scripts/base.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>

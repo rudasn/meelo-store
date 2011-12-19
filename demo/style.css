@@ -1,0 +1,5 @@
+span.loading{display:none}
+input.loading + .loading {display:inline;}
+table{}
+td{padding:2px}
+td input {width:90%;padding:3px;}
